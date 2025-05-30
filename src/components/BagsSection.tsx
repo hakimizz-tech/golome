@@ -1,48 +1,7 @@
 import BagsProductCard from "./BagsProductCard";
 import { motion } from "framer-motion";
+import { bagsData } from "@/lib/constants";
 
-const bagsData = [
-  {
-    id: 1,
-    imageUrl: "https://i.ibb.co/xt70cRX2/1.png",
-    name: "Elegance Classic",
-    description: "Crafted from the finest Italian leather, this timeless piece embodies sophistication and luxury. Perfect for the modern professional who values quality and style.",
-    price: "$899",
-    material: "Premium Italian Leather"
-  },
-  {
-    id: 2,
-    imageUrl: "https://i.ibb.co/21zv2Cw0/2.png",
-    name: "Heritage Collection",
-    description: "A masterpiece of traditional craftsmanship meets contemporary design. Hand-stitched details and superior leather quality make this an investment piece.",
-    price: "$1,299",
-    material: "Hand-Stitched Calfskin"
-  },
-  {
-    id: 3,
-    imageUrl: "https://i.ibb.co/WvQ4vXWv/3.png",
-    name: "Metropolitan Style",
-    description: "Urban elegance redefined with sleek lines and functional design. The perfect companion for city life, combining durability with refined aesthetics.",
-    price: "$749",
-    material: "Soft Nappa Leather"
-  },
-  {
-    id: 4,
-    imageUrl: "https://i.ibb.co/cRMM2VW/4.png",
-    name: "Luxury Essence",
-    description: "Where luxury meets functionality. This exquisite piece showcases the finest leather work with attention to every detail, creating an heirloom quality bag.",
-    price: "$1,599",
-    material: "Exotic Crocodile Leather"
-  },
-  {
-    id: 5,
-    imageUrl: "https://i.ibb.co/p6Xp40Nb/5.png",
-    name: "Contemporary Grace",
-    description: "Modern elegance with a timeless appeal. Features premium leather construction and innovative design elements for the discerning fashion enthusiast.",
-    price: "$999",
-    material: "Buttery Soft Lambskin"
-  }
-];
 
 const BagsSection = () => {
   return (
@@ -56,7 +15,7 @@ const BagsSection = () => {
         >
           <svg viewBox="0 0 24 24" fill="none" className="w-full h-full">
             <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" fill="black" opacity="0.1"/>
-          </svg>
+         </svg>
         </motion.div>
         
         <motion.div
