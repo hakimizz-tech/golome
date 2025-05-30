@@ -1,9 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useIsMobile } from "@/hooks/use-mobile";
+// import { useIsMobile } from "@/hooks/use-mobile";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
-import AnimatedLogo from "./AnimatedLogo";
 import { Menu, UserRound } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useMenuStore } from "@/hooks/use-menu-store";
@@ -11,8 +9,8 @@ import GOLOME_NEW from "@/assets/GOLOME_NEW.png"; // Adjust the path as necessar
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
-  const isMobile = useIsMobile();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  // const isMobile = useIsMobile();
+  // const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isMenuOpen, toggleMenu } = useMenuStore();
 
   useEffect(() => {
@@ -34,7 +32,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-24">
           {/* Logo Left */}
           <div className="flex items-center">
-            <Link to='/' className="h-24 w-24 aspect-auto">
+            <Link to='/golome' className="h-24 w-24 aspect-auto">
               <img src={GOLOME_NEW} alt="w-full" />
             </Link>
           </div>
@@ -122,28 +120,6 @@ const Header = () => {
         </div>
       </div>
       
-      {/* Mobile Menu - Full screen dropdown */}
-      {isMobile && (
-        <div className={`${mobileMenuOpen ? 'block' : 'hidden'} absolute top-24 left-0 w-full bg-white z-40 border-t border-gray-100 py-4 px-4 md:hidden`}>
-          <div className="flex flex-col space-y-4">
-            <Link to="/" className="text-sm font-medium uppercase tracking-wide py-2 flex justify-between items-center">
-              Men <span className="text-sm">→</span>
-            </Link>
-            <Link to="/" className="text-sm font-medium uppercase tracking-wide py-2 flex justify-between items-center">
-              Women <span className="text-sm">→</span>
-            </Link>
-            <Link to="/" className="text-sm font-medium uppercase tracking-wide py-2 flex justify-between items-center">
-              Highlight <span className="text-sm">→</span>
-            </Link>
-            <Link to="/" className="text-sm font-medium uppercase tracking-wide py-2 flex justify-between items-center">
-              Culture <span className="text-sm">→</span>
-            </Link>
-            <Link to="/" className="text-sm font-medium uppercase tracking-wide py-2 flex justify-between items-center">
-              Fashion <span className="text-sm">→</span>
-            </Link>
-          </div>
-        </div>
-      )}
     </header>
   );
 };

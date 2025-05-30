@@ -41,7 +41,7 @@ const HeroSlider = () => {
   }, [currentSlide]);
   
   return (
-    <div className="relative h-[80vh] mt-20 overflow-hidden">
+    <div className="relative h-[90vh] mt-20 overflow-hidden">
       <AnimatePresence>
         {sliderImages.map((slide, index) => (
           <motion.div
@@ -63,13 +63,13 @@ const HeroSlider = () => {
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-center text-white px-4">
                 <h2 
-                  ref={el => textRefs.current[index] = el}
+                  ref={el => { textRefs.current[index] = el; }}
                   className="text-4xl md:text-6xl font-dancing mb-4 opacity-0"
                 >
                   {slide.title}
                 </h2>
                 <p 
-                  ref={el => subtitleRefs.current[index] = el}
+                  ref={el => {subtitleRefs.current[index] = el}}
                   className="text-xl md:text-2xl max-w-2xl mx-auto opacity-0"
                 >
                   {slide.subtitle}

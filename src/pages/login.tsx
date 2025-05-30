@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -28,7 +27,7 @@ const Login = () => {
     },
   });
   
-  const onSubmit = (data: LoginFormValues) => {
+  const onSubmit = () => {
     toast({
       title: "Login attempted",
       description: "This is a demo. No actual login functionality is implemented.",
