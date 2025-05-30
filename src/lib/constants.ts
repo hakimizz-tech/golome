@@ -1,55 +1,49 @@
 import type { NewsItem, SliderImage } from "@/types";
-const image2 = '/HeroImages/2.jpg'
-const image4 = '/HeroImages/4.jpg'
-const image5 = '/HeroImages/5.jpg'
-const image6 = '/HeroImages/6.jpg'
-const image7 = '/HeroImages/7.jpg'
-const image8 = '/HeroImages/8.jpg'
-
-const bag1 = '/bags/1.png'
-const bag2 = '/bags/2.png'
-const bag3 = '/bags/3.png'
-const bag4 = '/bags/4.png'
-const bag5 = '/bags/5.png'
-
+// import image1 from '../assets/HeroImages/1.jpg'
+// import image2 from '../assets/HeroImages/2.jpg'
+// import image3 from '../assets/HeroImages/3.jpg'
+// import image4 from '../assets/HeroImages/4.jpg'
+// import image5 from '../assets/HeroImages/6.jpg'
+// import image7 from '../assets/HeroImages/7.jpg'
+// import image8 from '../assets/HeroImages/8.jpg'
 
 export const sliderImages: SliderImage[] = [
   {
     id: 1,
-    imageUrl: image7,
+    imageUrl: "https://i.ibb.co/7JPBCjwd/PXL-20250321-100150236-PORTRAIT.jpg",
     title: "The Art of Elegance",
     subtitle: "Redefining luxury through timeless aesthetic"
   },
   {
     id: 2,
-    imageUrl: image2,
+    imageUrl: "https://i.ibb.co/60krtxJw/PXL-20250321-144556857-PORTRAIT.jpg",
     title: "Bold Statements",
     subtitle: "Fashion that speaks volumes without saying a word"
   },
   {
     id: 3,
-    imageUrl: image8,
+    imageUrl: "https://i.ibb.co/Kp1xM8X2/PXL-20250321-133258510-PORTRAIT.jpg",
     title: "Runway Revolution",
     subtitle: "Where innovation meets tradition"
   },
   {
     id: 4,
-    imageUrl: image4,
+    imageUrl: "https://i.ibb.co/dwSvLYyP/PXL-20250321-145251359-PORTRAIT-1.jpg",
     title: "Timeless Style",
     subtitle: "Classics reinvented for the modern wardrobe"
   },
   {
     id: 5,
-    imageUrl: image5,
+    imageUrl: "https://i.ibb.co/TxtjYGv2/PXL-20250321-140700136-PORTRAIT.jpg",
     title: "Contemporary Fashion",
     subtitle: "Bold designs for the modern trendsetter"
   },
-  {
-    id: 6,
-    imageUrl: image6,
-    title: "Effortless Chic",
-    subtitle: "Discover the confidence that comes from impeccable style"
-  }
+  // {
+  //   id: 6,
+  //   imageUrl: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080",
+  //   title: "Effortless Chic",
+  //   subtitle: "Discover the confidence that comes from impeccable style"
+  // }
 ];
 
 export const newsItems: NewsItem[] = [
@@ -76,11 +70,10 @@ export const newsItems: NewsItem[] = [
   }
 ];
 
-
 export const bagsData = [
   {
     id: 1,
-    imageUrl: bag1,
+    imageUrl: "https://i.ibb.co/xt70cRX2/1.png",
     name: "Elegance Classic",
     description: "Crafted from the finest Italian leather, this timeless piece embodies sophistication and luxury. Perfect for the modern professional who values quality and style.",
     price: "$899",
@@ -88,7 +81,7 @@ export const bagsData = [
   },
   {
     id: 2,
-    imageUrl: bag2,
+    imageUrl: "https://i.ibb.co/21zv2Cw0/2.png",
     name: "Heritage Collection",
     description: "A masterpiece of traditional craftsmanship meets contemporary design. Hand-stitched details and superior leather quality make this an investment piece.",
     price: "$1,299",
@@ -96,7 +89,7 @@ export const bagsData = [
   },
   {
     id: 3,
-    imageUrl: bag3,
+    imageUrl: "https://i.ibb.co/WvQ4vXWv/3.png",
     name: "Metropolitan Style",
     description: "Urban elegance redefined with sleek lines and functional design. The perfect companion for city life, combining durability with refined aesthetics.",
     price: "$749",
@@ -104,7 +97,7 @@ export const bagsData = [
   },
   {
     id: 4,
-    imageUrl: bag4,
+    imageUrl: "https://i.ibb.co/cRMM2VW/4.png",
     name: "Luxury Essence",
     description: "Where luxury meets functionality. This exquisite piece showcases the finest leather work with attention to every detail, creating an heirloom quality bag.",
     price: "$1,599",
@@ -112,10 +105,10 @@ export const bagsData = [
   },
   {
     id: 5,
-    imageUrl: bag5,
+    imageUrl: "https://i.ibb.co/p6Xp40Nb/5.png",
     name: "Contemporary Grace",
     description: "Modern elegance with a timeless appeal. Features premium leather construction and innovative design elements for the discerning fashion enthusiast.",
     price: "$999",
     material: "Buttery Soft Lambskin"
   }
-];
+]

@@ -5,7 +5,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/s
 import { Menu, UserRound } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useMenuStore } from "@/hooks/use-menu-store";
-import GOLOME_NEW from "@/assets/GOLOME_NEW.png"; // Adjust the path as necessary
+// import GOLOME_NEW from "@/assets/GOLOME_NEW.png"; // Adjust the path as necessary
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -25,7 +25,7 @@ const Header = () => {
   return (
     <header className={cn(
       "fixed top-0 left-0 w-full z-40 transition-all duration-300",
-      scrolled ? "bg-white/95 backdrop-blur-xl shadow-sm" : "bg-white",
+      scrolled ? "bg-white/30 backdrop-blur-md shadow-sm" : "bg-white",
       "border-b border-gray-100"
     )}>
       <div className="container mx-auto px-4">
@@ -33,7 +33,7 @@ const Header = () => {
           {/* Logo Left */}
           <div className="flex items-center">
             <Link to='/' className="h-24 w-24 aspect-auto">
-              <img src={GOLOME_NEW} alt="w-full" />
+              <img src="https://i.ibb.co/BKtN4882/GOLOME-Logo.png" alt="GOLOME-Logo" />
             </Link>
           </div>
           
