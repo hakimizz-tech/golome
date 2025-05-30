@@ -32,7 +32,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-24">
           {/* Logo Left */}
           <div className="flex items-center">
-            <Link to='/golome' className="h-24 w-24 aspect-auto">
+            <Link to='/' className="h-24 w-24 aspect-auto">
               <img src={GOLOME_NEW} alt="w-full" />
             </Link>
           </div>

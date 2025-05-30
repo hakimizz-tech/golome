@@ -1,18 +1,16 @@
 import type { NewsItem, SliderImage } from "@/types";
-// import image1 from '../assets/HeroImages/1.jpg'
-import image2 from '../assets/HeroImages/2.jpg'
-// import image3 from '../assets/HeroImages/3.jpg'
-import image4 from '../assets/HeroImages/4.jpg'
-import image5 from '../assets/HeroImages/5.jpg'
-import image6 from '../assets/HeroImages/6.jpg'
-import image7 from '../assets/HeroImages/7.jpg'
-import image8 from '../assets/HeroImages/8.jpg'
+const image2 = '/HeroImages/2.jpg'
+const image4 = '/HeroImages/4.jpg'
+const image5 = '/HeroImages/5.jpg'
+const image6 = '/HeroImages/6.jpg'
+const image7 = '/HeroImages/7.jpg'
+const image8 = '/HeroImages/8.jpg'
 
-import bag1 from '../assets/bags/1.png';
-import bag2 from '../assets/bags/2.png';
-import bag3 from '../assets/bags/3.png';
-import bag4 from '../assets/bags/4.png';
-import bag5 from '../assets/bags/5.png';
+const bag1 = '/bags/1.png'
+const bag2 = '/bags/2.png'
+const bag3 = '/bags/3.png'
+const bag4 = '/bags/4.png'
+const bag5 = '/bags/5.png'
 
 
 export const sliderImages: SliderImage[] = [
