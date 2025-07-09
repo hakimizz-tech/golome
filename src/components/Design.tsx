@@ -1,6 +1,4 @@
 
-import React from 'react'
-import AnimatedContent from '@/blocks/Animations/AnimatedContent/AnimatedContent'
 import FadeContent from '@/blocks/Animations/FadeContent/FadeContent'
 import DesignImage from '@/assets/Design-image/design-image-1.jpg'
 // import Paper from '@/assets/Design-image/paper.svg'

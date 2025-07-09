@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
@@ -16,7 +16,6 @@ import model1 from '@/assets/auth-images/american-beauti-afro-adult-african.jpg'
 import model2 from '@/assets/auth-images/beautiful-african-model-with-perfect-curly-hairs-elegant-orange-blouse-silk-pants-sitting-vintage-chair-beige-wall.jpg';
 import model3 from '@/assets/auth-images/front-view-woman-holding-purses.jpg';
 
-import { AnimatedFooter } from '@/components/AnimatedFooter';
 
 
 

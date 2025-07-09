@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useInView, motion } from 'framer-motion';
 
 function Overlay() {
@@ -61,11 +61,11 @@ function Overlay() {
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
       exit="exit"
-      variants={containerVariants}
+      variants={{containerVariants}}
     >
       <motion.div 
         className="flex items-center justify-center p-4 border-r border-gray-800" 
-        variants={childVariants}
+        variants={{childVariants}}
       >
         <div className="text-center">
           <h2 className="text-2xl font-bold mb-2">Breaking News</h2>
@@ -75,7 +75,7 @@ function Overlay() {
       
       <motion.div 
         className="flex items-center justify-center p-4 border-r border-gray-800 lg:border-r" 
-        variants={childVariants}
+        variants={{childVariants}}
       >
         <div className="text-center">
           <h2 className="text-2xl font-bold mb-2">Market Watch</h2>
@@ -85,7 +85,7 @@ function Overlay() {
       
       <motion.div 
         className="flex items-center justify-center p-4 border-r border-gray-800" 
-        variants={childVariants}
+        variants={{childVariants}}
       >
         <div className="text-center">
           <h2 className="text-2xl font-bold mb-2">Tech Updates</h2>
@@ -95,7 +95,7 @@ function Overlay() {
       
       <motion.div 
         className="flex items-center justify-center p-4" 
-        variants={childVariants}
+        variants={{childVariants}}
       >
         <div className="text-center">
           <h2 className="text-2xl font-bold mb-2">Sports</h2>

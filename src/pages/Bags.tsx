@@ -1,13 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
-import React from 'react'
 import HeaderPage from './HeaderPage'
 import LadyWithBag from '@/assets/Design-image/image 5.jpg'
-import LadyOnStage from '@/assets/Design-image/image 1.jpg'
-import Bag from '@/assets/Bags/bag 1.jpg'
-import { Link } from 'wouter'
 import {CornerRightDown } from 'lucide-react'
-import GridBackground from '@/components/GridBackground'
-import {Card, HoverEffect} from '@/components/ui/card-hover-effect'
+import {Card} from '@/components/ui/card-hover-effect'
 
 //import bag images
 import bag1 from '@/assets/Bags/1.png'

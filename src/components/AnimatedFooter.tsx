@@ -1,17 +1,13 @@
-import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { useRef } from "react";
+import { motion, scale, useInView } from "framer-motion";
 import { Twitter, Instagram, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer"
 
@@ -68,6 +64,12 @@ export function AnimatedFooter() {
     }
   };
 
+  const hover = {
+     scale: 1.1, 
+     rotate: 5 
+
+  }
+
   return (
     <footer ref={ref} className="bg-black text-white min-h-screen flex flex-col justify-center relative overflow-hidden">
       <motion.div 
@@ -78,7 +80,7 @@ export function AnimatedFooter() {
       >
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           {/* Brand Section */}
-          <motion.div className="md:col-span-1" variants={itemVariants}>
+          <motion.div className="md:col-span-1" variants={{itemVariants}}>
             <motion.h3 
               className="text-2xl font-bold mb-4"
               initial={{ opacity: 0, x: -20 }}
@@ -110,18 +112,18 @@ export function AnimatedFooter() {
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
               >
-                <motion.div variants={socialButtonVariants}>
+                <motion.div variants={{socialButtonVariants}}>
                   <Button
                     variant="ghost"
                     size="icon"
                     className="w-10 h-10 bg-white bg-opacity-10 rounded-full hover:bg-[#ff6900] transition-colors"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    whileHover={hover}
                     whileTap={{ scale: 0.95 }}
                   >
                     <Twitter className="w-4 h-4" />
                   </Button>
                 </motion.div>
-                <motion.div variants={socialButtonVariants}>
+                <motion.div variants={{socialButtonVariants}}>
                   <Button
                     variant="ghost"
                     size="icon"
@@ -132,7 +134,7 @@ export function AnimatedFooter() {
                     <Instagram className="w-4 h-4" />
                   </Button>
                 </motion.div>
-                <motion.div variants={socialButtonVariants}>
+                <motion.div variants={{socialButtonVariants}}>
                   <Button
                     variant="ghost"
                     size="icon"
@@ -148,7 +150,7 @@ export function AnimatedFooter() {
           </motion.div>
 
           {/* Customer Service */}
-          <motion.div variants={itemVariants}>
+          <motion.div variants={{itemVariants}}>
             <motion.h4 
               className="font-semibold mb-4"
               initial={{ opacity: 0, y: 10 }}
@@ -244,7 +246,7 @@ export function AnimatedFooter() {
           </motion.div>
 
           {/* About */}
-          <motion.div variants={itemVariants}>
+          <motion.div variants={{itemVariants}}>
             <motion.h4 
               className="font-semibold mb-4"
               initial={{ opacity: 0, y: 10 }}

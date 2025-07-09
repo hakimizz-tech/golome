@@ -4,8 +4,6 @@
 // import React from 'react'
 import  CardSwapComponent, {Card} from '@/blocks/Components/CardSwap/CardSwap'
 import  TrueFocus from '@/blocks/TextAnimations/TrueFocus/TrueFocus'
-import bag1 from '@/assets/Bags/bag 1.jpg'
-import bag2 from '@/assets/Bags/bag 2.jpg'
 import bag3 from '@/assets/Bags/5.png'
 import bag4 from '@/assets/Bags/1.png'
 import bag5 from '@/assets/Bags/3.png'
