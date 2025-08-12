@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import {
   motion,
@@ -6,9 +5,9 @@ import {
   useTransform,
   useSpring,
   MotionValue,
-} from "motion/react";
-
-
+} from "framer-motion";
+import TextType from "@/blocks/TextAnimations/TextType/TextType";
+import { OptimizedImage } from "@/components/optimized-image"; // Import OptimizedImage component
 
 export const HeroParallax = ({
   products,
@@ -16,7 +15,7 @@ export const HeroParallax = ({
   products: {
     title: string;
     link: string;
-    thumbnail: string;
+    thumbnail: string; // This is now a Cloudinary public ID
   }[];
 }) => {
   const firstRow = products.slice(0, 5);
@@ -57,7 +56,7 @@ export const HeroParallax = ({
   return (
     <div
       ref={ref}
-      className="h-[300vh] py-40 overflow-hidden  antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
+      className="h-[300vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Header />
       <motion.div
@@ -78,7 +77,7 @@ export const HeroParallax = ({
             />
           ))}
         </motion.div>
-        <motion.div className="flex flex-row  mb-20 space-x-20 ">
+        <motion.div className="flex flex-row mb-20 space-x-20">
           {secondRow.map((product) => (
             <ProductCard
               product={product}
@@ -103,15 +102,17 @@ export const HeroParallax = ({
 
 export const Header = () => {
   return (
-    <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full  left-0 top-0">
+    <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0">
       <h1 className="text-2xl md:text-7xl font-bold dark:text-white">
         GOLOME <br /> Fashion Meets Design
       </h1>
-      <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
-        Discover our curated collection of products that blend style and
-        functionality. From fashion to tech, explore the best in design and
-        innovation.
-      </p>
+      <TextType
+        text="Discover our curated collection of products that blend style and functionality. From fashion to tech, explore the best in design and innovation."
+        loop={false}
+        startOnVisible
+        className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200"
+        textColors={['#000000']}
+      />
     </div>
   );
 };
@@ -141,15 +142,16 @@ export const ProductCard = ({
       <a
         href={product.link}
         aria-disabled={!product.link}
-        
         className="block group-hover/product:shadow-2xl"
       >
-        <img
-          src={product.thumbnail}
-          height="600"
-          width="600"
-          className="object-cover object-left-top absolute h-full w-full inset-0"
+        {/* Replace standard img with OptimizedImage */}
+        <OptimizedImage
+          publicId={product.thumbnail}
           alt={product.title}
+          width={800}
+          height={800}
+          className="object-cover object-left-top absolute h-full w-full inset-0"
+          highQuality={true}
         />
       </a>
       <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>

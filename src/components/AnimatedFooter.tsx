@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useRef } from "react";
-import { motion, scale, useInView } from "framer-motion";
+import { motion, useInView, type Variants } from "framer-motion"; // Removed MotionProps
 import { Twitter, Instagram, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
@@ -11,15 +11,17 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer"
 
-import  Newsletter from  "@/pages/Newsletter"
+import Newsletter from "@/pages/Newsletter"
 import FAQ from "./FAQ";
 
+// Removed unused MotionButton declaration
 
 export function AnimatedFooter() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.2 });
 
-  const containerVariants = {
+  // Animation variants definitions remain unchanged
+  const containerVariants: Variants = {
     hidden: {},
     visible: {
       transition: {
@@ -29,7 +31,7 @@ export function AnimatedFooter() {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: {
       opacity: 0,
       y: 30,
@@ -46,7 +48,7 @@ export function AnimatedFooter() {
     }
   };
 
-  const socialButtonVariants = {
+  const socialButtonVariants: Variants = {
     hidden: {
       opacity: 0,
       scale: 0,
@@ -67,8 +69,20 @@ export function AnimatedFooter() {
   const hover = {
      scale: 1.1, 
      rotate: 5 
+  };
 
-  }
+  // Custom variant for list items
+  const listItemVariants: Variants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: (i: number) => ({ 
+      opacity: 1, 
+      x: 0,
+      transition: { 
+        duration: 0.5, 
+        delay: 0.6 + i * 0.1 
+      }
+    })
+  };
 
   return (
     <footer ref={ref} className="bg-black text-white min-h-screen flex flex-col justify-center relative overflow-hidden">
@@ -80,9 +94,9 @@ export function AnimatedFooter() {
       >
         <div className="grid md:grid-cols-3 gap-8 mb-12">
           {/* Brand Section */}
-          <motion.div className="md:col-span-1" variants={{itemVariants}}>
+          <motion.div className="md:col-span-1" variants={itemVariants}>
             <motion.h3 
-              className="text-2xl font-bold mb-4"
+              className="text-2xl font-bold mb-4 logo-font"
               initial={{ opacity: 0, x: -20 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
               transition={{ duration: 0.6, delay: 0.3 }}
@@ -112,47 +126,61 @@ export function AnimatedFooter() {
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
               >
-                <motion.div variants={{socialButtonVariants}}>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="w-10 h-10 bg-white bg-opacity-10 rounded-full hover:bg-[#ff6900] transition-colors"
+                {/* Twitter button - FIXED */}
+                <motion.div variants={socialButtonVariants}>
+                  <motion.div
                     whileHover={hover}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <Twitter className="w-4 h-4" />
-                  </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="w-10 h-10 bg-white bg-opacity-10 rounded-full hover:bg-[#ff6900] transition-colors"
+                    >
+                      <Twitter className="w-4 h-4" />
+                    </Button>
+                  </motion.div>
                 </motion.div>
-                <motion.div variants={{socialButtonVariants}}>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="w-10 h-10 bg-white bg-opacity-10 rounded-full hover:bg-[#ff6900] transition-colors"
+
+                {/* Instagram button - FIXED */}
+                <motion.div variants={socialButtonVariants}>
+                  <motion.div
                     whileHover={{ scale: 1.1, rotate: -5 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <Instagram className="w-4 h-4" />
-                  </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="w-10 h-10 bg-white bg-opacity-10 rounded-full hover:bg-[#ff6900] transition-colors"
+                    >
+                      <Instagram className="w-4 h-4" />
+                    </Button>
+                  </motion.div>
                 </motion.div>
-                <motion.div variants={{socialButtonVariants}}>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="w-10 h-10 bg-white bg-opacity-10 rounded-full hover:bg-[#ff6900] transition-colors"
+
+                {/* MessageCircle button - FIXED */}
+                <motion.div variants={socialButtonVariants}>
+                  <motion.div
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <MessageCircle className="w-4 h-4" />
-                  </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="w-10 h-10 bg-white bg-opacity-10 rounded-full hover:bg-[#ff6900] transition-colors"
+                    >
+                      <MessageCircle className="w-4 h-4" />
+                    </Button>
+                  </motion.div>
                 </motion.div>
               </motion.div>
             </div>
           </motion.div>
 
           {/* Customer Service */}
-          <motion.div variants={{itemVariants}}>
+          <motion.div variants={itemVariants}>
             <motion.h4 
-              className="font-semibold mb-4"
+              className="font-semibold mb-4 hf"
               initial={{ opacity: 0, y: 10 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -168,17 +196,8 @@ export function AnimatedFooter() {
               {["Email us", "Order"].map((item, index) => (
                 <motion.li
                   key={item}
-                  variants={{
-                    hidden: { opacity: 0, x: -20 },
-                    visible: { 
-                      opacity: 1, 
-                      x: 0,
-                      transition: { 
-                        duration: 0.5, 
-                        delay: 0.6 + index * 0.1 
-                      }
-                    }
-                  }}
+                  custom={index}
+                  variants={listItemVariants}
                 >
                   <a href="#" className="hover:text-[#ff6900] transition-colors">
                     {item}
@@ -198,13 +217,13 @@ export function AnimatedFooter() {
                       delay: 0.9
                     }
                   }
-                }}
+                } as Variants}
               >
                 <Drawer>
                   <DrawerTrigger asChild>
                     <Link href=""  className="hover:text-[#ff6900] transition-colors">
-                  FAQs
-                   </Link>
+                      FAQs
+                    </Link>
                   </DrawerTrigger>
                   <DrawerContent className=" w-full">
                     <div className="mx-auto w-full max-w-sm">
@@ -227,13 +246,13 @@ export function AnimatedFooter() {
                       delay: 0.9
                     }
                   }
-                }}
+                } as Variants}
               >
                 <Drawer>
                   <DrawerTrigger asChild>
                     <Link href=""  className="hover:text-[#ff6900] transition-colors">
-                  Newsletter
-                   </Link>
+                      Newsletter
+                    </Link>
                   </DrawerTrigger>
                   <DrawerContent className=" w-full">
                     <div className="mx-auto w-full max-w-sm">
@@ -246,9 +265,9 @@ export function AnimatedFooter() {
           </motion.div>
 
           {/* About */}
-          <motion.div variants={{itemVariants}}>
+          <motion.div variants={itemVariants}>
             <motion.h4 
-              className="font-semibold mb-4"
+              className="font-semibold mb-4 hf"
               initial={{ opacity: 0, y: 10 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -264,17 +283,8 @@ export function AnimatedFooter() {
               {["Values", "Team", "Culture", "About us"].map((item, index) => (
                 <motion.li
                   key={item}
-                  variants={{
-                    hidden: { opacity: 0, x: -20 },
-                    visible: { 
-                      opacity: 1, 
-                      x: 0,
-                      transition: { 
-                        duration: 0.5, 
-                        delay: 0.6 + index * 0.1 
-                      }
-                    }
-                  }}
+                  custom={index}
+                  variants={listItemVariants}
                 >
                   <a href="#" className="hover:text-[#ff6900] transition-colors">
                     {item}

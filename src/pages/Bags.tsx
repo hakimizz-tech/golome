@@ -1,71 +1,35 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import HeaderPage from './HeaderPage'
-import LadyWithBag from '@/assets/Design-image/image 5.jpg'
 import {CornerRightDown } from 'lucide-react'
 import {Card} from '@/components/ui/card-hover-effect'
-
-//import bag images
-import bag1 from '@/assets/Bags/1.png'
-import bag2 from '@/assets/Bags/2.png'
-import bag3 from '@/assets/Bags/3.png'
-import bag4 from '@/assets/Bags/4.png'
-import bag5 from '@/assets/Bags/5.png'
-import bag6 from '@/assets/Bags/6.jpg'
-import designBag from '@/assets/Bags/bag 1.jpg'
-
-const bags = [
-    {
-        image: bag1,
-        // title: 'Bag 1',
-        // description: 'This is the first bag',
-        link: '#'
-    },
-    {
-        image: bag2,
-        // title: 'Bag 2',
-        // description: 'This is the second bag',
-        link: '#'
-    },
-    {
-        image: bag3,
-        // title: 'Bag 3',
-        // description: 'This is the third bag',
-        link: '#'
-    }, 
-    {
-        image: bag4,
-        // title: 'Bag 4',
-        // description: 'This is the fourth bag',
-        link: '#'
-    },
-    {
-        image: bag5,
-        // title: 'Bag 5',
-        // description: 'This is the fifth bag',
-        link: '#'
-    },
-    {
-        image: bag6,
-        // title: 'Bag 6',
-        // description: 'This is the sixth bag',
-        link: '#'
-    }
-]
-
+import { products } from '@/lib/constants';
+import { useEffect } from 'react'
+import { Link } from 'wouter'
+import ProductHeader from '@/components/ProductHeader';
+import ProductBreadCrump from '@/components/ProductBreadCrump';
+import { OptimizedImage } from '@/components/optimized-image';
+import { DESIGN_IMAGES, BAGS } from '@/lib/image-map';
 
 function Bags() {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+    
   return (
     <div className='min-h-screen bg-white flex flex-col text-black snap-y snap-mandatory overflow-y-scroll scroll-smooth'>
-        <HeaderPage className='backdrop-blur-sm bg-white/30'/>
+        <ProductHeader/>
         
         {/* Hero Section Container */}
-        <div className="w-full flex flex-col h-[90vh] lg:flex-row  mt-18 snap-start snap-always">
+        <div className="w-full flex flex-col h-[90vh] lg:flex-row mt-10 snap-start snap-always">
             {/* Image Container - Left Side */}
-            <div className='w-full lg:w-1/2 h-[40vh] lg:h-full flex items-center justify-center rounded-lg  lg:rounded-l-lg lg:rounded-r-none bg-gray-50 px-4'>
-                <img 
-                    src={LadyWithBag} 
+            <div className='w-full lg:w-1/2 h-[40vh] lg:h-full flex items-center justify-center rounded-lg lg:rounded-l-lg lg:rounded-r-none bg-gray-50 px-4'>
+                <OptimizedImage 
+                    publicId={DESIGN_IMAGES.image5}
+                    alt="Lady with designer bag" 
                     className='object-cover object-bottom w-full h-full max-w-md lg:max-w-none'
+                    width={800}
+                    height={1000}
+                    highQuality={true}
                 />
             </div>
             
@@ -84,48 +48,72 @@ function Bags() {
             </div>
         </div>
 
-        {/* Filter Section */}
-        <section className="w-full  h-screen  relative snap-start snap-always" id='bags'>
-            {/* <GridBackground> */}
-                <div className="w-full h-screen mt-24  ">
-                    <h1 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-6 text-center">
-                        Explore Our Collection
-                    </h1>
-                    {/* <HoverEffect 
-                        items={bags}
-                        // className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full"
-                    /> */}
+        <section className="w-full relative snap-start snap-always" id='bags'>
+            <div className="w-full min-h-screen pt-24 pb-16">
+                <ProductBreadCrump/>
+                <h1 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-6 text-left px-8 hf">
+                    New Arrivals
+                </h1>
 
-                    <div className="grid grid-cols-2 lg:grid-cols-3 w-full h-full gap-4 px-4 lg:px-8">
-                        {bags.map((bag, index) => (
-                        <Card key={index} className='bg-white border border-gray-200 shadow-lg hover:shadow-xl transition-shadow duration-300 relative cursor-pointer group'>
-                            <div className='flex flex-col items-center justify-center h-full w-full relative'>
-                                {/* image container to cover the rest of the container */}
-                                <div className='w-full h-full absoulte top-52 left-0 mt-7 flex items-center justify-center'>
-                                    <img src={bag.image} alt="bags" className='object-contain absolute h-54' />
-                                </div>
-                            </div>
-                        </Card>
-
-                    ))}
-                    </div>
+                <div className='flex flex-row justify-between px-8 items-start'>
+                    <p className="text-left pf max-w-xl">
+                        Shop the Latest Style: Stay ahead of the curve with our newest Arrival
+                    </p>
+                    <p className='text-right px-4 lg:px-8 mb-4 text-[#ff6900] hover:text-[#e55a00] hover:underline cursor-pointer pf'>
+                        <Link href='/products'>All Products</Link>
+                    </p>
                 </div>
-               
-            {/* </GridBackground> */}
+
+                <div className="grid grid-cols-2 lg:grid-cols-3 w-full gap-4 px-4 lg:px-8 mt-6">
+                    {products.map((product) => (
+                        <div key={product.id}>
+                            <Link href={`/product/${product.id}`} state={{ product }}>
+                                <Card
+                                  product={product}
+                                  className='bg-white border border-gray-200 shadow-lg hover:shadow-xl transition-shadow duration-300 relative group h-80'
+                                >
+                                  <div className='flex flex-col items-center justify-center h-full w-full relative'>
+                                    <div className='w-full h-full flex items-center justify-center'>
+                                      <OptimizedImage 
+                                        publicId={product.images} 
+                                        alt={product.name} 
+                                        className='object-contain h-54'
+                                        width={400}
+                                        height={400}
+                                      />
+                                    </div>
+                                  </div>
+                                </Card>
+                            </Link>
+                            <div className="mt-2 text-left relative z-10">
+                              <p className="text-black font-semibold">{product.name}</p>
+                              <p className="text-gray-600">ksh. {product.price.toFixed(2)}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </section>
         
         {/* customizing bags  */}
-        <section className='w-full h-screen snap-start snap-always flex items-center justify-center overflow-hidden mt-44 lg:mt-34'>
-            <div className='flex flex-col lg:flex-row justify-between items-center w-full h-full max-w-7xl mx-auto px-4 lg:px-8 '>
+        <section className='w-full min-h-screen snap-start snap-always flex items-center justify-center overflow-hidden bg-white relative z-20'>
+            <div className='flex flex-col lg:flex-row justify-between items-center w-full min-h-[70vh] max-w-7xl mx-auto px-4 lg:px-8 py-16 gap-12'>
                 {/* Image container - Left Side */}
-                <div className='w-full lg:w-1/2 h-[50vh] lg:h-[80vh] flex items-center justify-center '>
-                    <div className='w-full h-full max-w-md lg:max-w-lg bg-gray-300 rounded-lg flex items-center justify-center lg:mt-20'>
-                        <img src={designBag} alt="" className='rounded-2xl'/>
+                <div className='w-full lg:w-1/2 flex items-center justify-center'>
+                    <div className='w-full max-w-md lg:max-w-lg bg-gray-300 rounded-lg flex items-center justify-center'>
+                        <OptimizedImage 
+                            publicId={BAGS.bagDetail1}
+                            alt="Customizable designer bag" 
+                            className='rounded-2xl'
+                            width={600}
+                            height={600}
+                            highQuality={true}
+                        />
                     </div>
                 </div>
                 
                 {/* Content container - Right Side */}
-                <div className='w-full lg:w-1/2 h-[50vh] lg:h-[80vh] flex flex-col justify-center items-start px-6 lg:px-12 py-8 lg:py-0 bg-white font-serif'>
+                <div className='w-full lg:w-1/2 flex flex-col justify-center items-start px-2 lg:px-6 font-serif'>
                     <div className="max-w-md">
                         <p className="text-base lg:text-lg text-gray-700 mb-8 leading-relaxed font-serif">
                             We offer fully customizable bags designed to match your unique preferences and style. 
@@ -143,4 +131,4 @@ function Bags() {
   )
 }
 
-export default Bags
+export default Bags;

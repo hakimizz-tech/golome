@@ -1,6 +1,10 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useCartStore } from "@/store/cartStore";
+import { Button } from "@/components/ui/button";
+import type { Product } from "@/types";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+import { useLocation } from "wouter";
 
 export const HoverEffect = ({
   items,
@@ -67,20 +71,66 @@ export const HoverEffect = ({
 export const Card = ({
   className,
   children,
+  product,
+  href,
 }: {
   className?: string;
   children: React.ReactNode;
+  product?: Product;
+  href?: string; // new: navigate to product page when card (not button) clicked
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const { addToCart } = useCartStore();
+  const [, navigate] = useLocation();
+
+  const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();      // stop card click
+    e.preventDefault();       // prevent navigation
+    if (product) addToCart({ ...product, quantity: 1 });
+  };
+
+  const handleCardClick = () => {
+    if (href) navigate(href);
+  };
+
+  const showCta = product && isHovered;
+
   return (
     <div
       className={cn(
-        "rounded-2xl h-full w-full p-4 overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20",
+        "rounded-2xl h-full w-full overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20 cursor-pointer",
         className
       )}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={handleCardClick}
     >
-      <div className="relative z-50 h-full w-full">
-        <div className="p-1 h-full w-full ">{children}</div>
+      {/* Content wrapper with bottom padding reserved for the button */}
+      <div className={cn("relative z-10 h-full w-full p-4", product && "pb-20")}>
+        {children}
       </div>
+
+      {product && (
+        <AnimatePresence>
+          {showCta && (
+            <motion.div
+              className="absolute inset-x-0 bottom-0"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 16 }}
+              transition={{ duration: 0.18 }}
+            >
+              <Button
+                type="button"
+                onClick={handleAddToCart}
+                className="w-full rounded-none bg-[#ff6900] text-white hover:bg-[#e55a00] h-12"
+              >
+                Add to Cart
+              </Button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      )}
     </div>
   );
 };
